@@ -17,7 +17,7 @@ class Mysql implements iWorkData
 
     public function saveData($key, $val)
     {
-		$this->deleteData($key);       //if no primary key in table
+		$this->deleteData($key); //в таблице нет primary key и update не работает
         $val = mysql_escape_string($val);
         $params = array('key'=> $key, 'data' => $val);
 		var_dump($params);

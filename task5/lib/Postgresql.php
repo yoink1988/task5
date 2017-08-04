@@ -9,9 +9,10 @@ class Postgresql implements iWorkData
 			return $this->link;
 		}
 		if($this->link = pg_connect("host=".POSTGRE_HOST.
+								  ", port=".POSTGRE_PORT.
 								", dbname=".POSTGRE_DB_NAME.
 								  ", user=".POSTGRE_USER.
-							  ", password=".POSTGRE_PASS)) // PORT
+							  ", password=".POSTGRE_PASS))
 		{
 			return $this->link;
 		}
@@ -19,7 +20,7 @@ class Postgresql implements iWorkData
 	
     public function saveData($key, $val)
     {
-		$this->deleteData($key);			//if no primary key in table
+		$this->deleteData($key);		//в таблице нет primary key и update не работает 
         $val = pg_escape_string($val);
         $params = array('key'=> $key, 'data' => $val);
 		$query = 'INSERT INTO '.POSTGRE_TABLE_NAME." (key, data) VALUES (";

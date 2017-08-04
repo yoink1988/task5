@@ -64,21 +64,20 @@ if(isset($_POST['deleteMysql']))
 
 if(isset($_POST['addPg']) && !empty($_POST['string']))
 {
-	echo 'sdasd';
-	$handler = new Mysql;
+	$handler = new Postgresql;
 	$result = $handler->saveData(KEY, $_POST['string']);
 }
 
 if(isset($_POST['watchPg']))
 {
-	$handler = new Mysql;
+	$handler = new Postgresql;
 	$result = $handler->getData(KEY);
 
 }
 
 if(isset($_POST['deletePg']))
 {
-	$handler = new Mysql;
+	$handler = new Postgresql;
 	$result = $handler->deleteData(KEY);
 }
 
